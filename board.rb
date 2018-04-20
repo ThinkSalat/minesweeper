@@ -1,4 +1,6 @@
+require_relative 'tile'
 class Board
+  attr_accessor :grid
   def initialize(bombcount=8)
     @bombcount = bombcount
     @grid = Array.new(10) { Array.new(10) }
@@ -6,7 +8,7 @@ class Board
 
   def populate
     @grid.flatten.each do |cell|
-      cell << Tile.new(self)
+      cell = Tile.new(self)
     end
     add_bombs
   end
@@ -21,6 +23,10 @@ class Board
   end
 
   def render
-    
+    p @grid
   end
 end
+
+b = Board.new
+# b.populate
+# b.render
